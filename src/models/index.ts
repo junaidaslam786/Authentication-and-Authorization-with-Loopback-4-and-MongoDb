@@ -3,3 +3,8 @@ export * from './reset-password-init.model';
 export * from './user-credentials.model';
 export * from './user-with-passowrd.model';
 export * from './user.model';
+export * from './company.model';
+export * from './company-data.model';
+export * from './highlights.model';
+export * from './preferences.model';
+export * from './tables.model';

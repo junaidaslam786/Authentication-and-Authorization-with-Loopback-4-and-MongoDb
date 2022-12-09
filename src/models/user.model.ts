@@ -1,5 +1,9 @@
-import {Entity, hasOne, model, property} from '@loopback/repository';
+import {Entity, hasOne, model, property, hasMany} from '@loopback/repository';
+import {Company} from './company.model';
 import {UserCredentials} from './user-credentials.model';
+import {Highlights} from './highlights.model';
+import {Preferences} from './preferences.model';
+import {Tables} from './tables.model';
 
 @model({
   settings: {
@@ -29,11 +33,8 @@ export class User extends Entity {
   })
   email: string;
 
-  // @property({
-  //   type: 'string',
-  //   required: true,
-  // })
-  // password: string;
+  @hasOne(() => Company, {keyTo: 'userId'})
+  company: Company;
 
   @hasOne(() => UserCredentials)
   userCredentials: UserCredentials;
@@ -54,25 +55,14 @@ export class User extends Entity {
   })
   roles?: string[];
 
-  // @property({
-  //   type: 'string',
-  // })
-  // resetKey?: string;
+  @hasMany(() => Highlights)
+  highlights: Highlights[];
 
-  // @property({
-  //   type: 'number',
-  // })
-  // resetCount: number;
+  @hasMany(() => Preferences)
+  preferences: Preferences[];
 
-  // @property({
-  //   type: 'string',
-  // })
-  // resetTimestamp: string;
-
-  // @property({
-  //   type: 'string',
-  // })
-  // resetKeyTimestamp: string;
+  @hasMany(() => Tables)
+  tables: Tables[];
 
   constructor(data?: Partial<User>) {
     super(data);

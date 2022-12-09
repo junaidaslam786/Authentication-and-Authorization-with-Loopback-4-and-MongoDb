@@ -9,7 +9,7 @@ const config = {
   port: 27017,
   user: '',
   password: '',
-  database: 'compnay',
+  database: 'fiverr-project-1',
   useNewUrlParser: true,
 };
 

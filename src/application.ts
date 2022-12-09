@@ -19,11 +19,16 @@ import {
 import {ServiceMixin} from '@loopback/service-proxy';
 import crypto from 'crypto';
 import path from 'path';
-import {PasswordHasherBindings, UserServiceBindings} from './keys';
+import {
+  CompanyServiceBindings,
+  PasswordHasherBindings,
+  UserServiceBindings,
+} from './keys';
 import {ErrorHandlerMiddlewareProvider} from './middleware/error-handler.middleware';
 import {MySequence} from './sequence';
 import {
   BcryptHasher,
+  CompanyService,
   JWTService,
   SecuritySpecEnhancer,
   UserManagementService,
@@ -87,6 +92,8 @@ export class AuthenticatonAuthApplication extends BootMixin(
     this.bind(TokenServiceBindings.TOKEN_SERVICE).toClass(JWTService);
 
     this.bind(UserServiceBindings.USER_SERVICE).toClass(UserManagementService);
+    this.bind(CompanyServiceBindings.COMPANY_SERVICE).toClass(CompanyService);
+    // this.bind(CompanyDataServiceBindings.COMPANY_DATA_SERVICE).toClass(CompanyDataService);
 
     this.add(createBindingFromClass(SecuritySpecEnhancer));
 

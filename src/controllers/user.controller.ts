@@ -83,7 +83,7 @@ export class UserManagementController {
     newUserRequest: NewUserRequest,
   ): Promise<User> {
     // All new users have the "customer" role by default
-    newUserRequest.roles = ['admin '];
+    newUserRequest.roles = ['guest '];
     // ensure a valid email value and password value
     validateCredentials(_.pick(newUserRequest, ['email', 'password']));
 
